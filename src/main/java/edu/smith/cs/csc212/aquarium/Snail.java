@@ -23,6 +23,8 @@ public class Snail {
 	 * The position of the Snail; y-coordinate.
 	 */
 	public int y;
+	
+	public int green=Color.blue.getGreen();
 
 	/**
 	 * Create a snail at (sx, sy) with position s.
@@ -51,6 +53,39 @@ public class Snail {
 	 */
 	public void move() {
 
+		if(x<20&&y!=0)
+		{
+			y--;
+		}
+		else if(x<20&&(y==0))
+		{
+			x++;
+		}
+		else if(y<20&&x!=Aquarium.WIDTH)
+		{
+			x++;
+		}
+		else if(y<20&&x==Aquarium.WIDTH)
+		{
+			y++;
+		}
+		else if(x<=Aquarium.WIDTH&&x>=Aquarium.WIDTH-20&&y!=Aquarium.HEIGHT)
+		{
+			y++;
+		}
+		else if(x<=Aquarium.WIDTH&&x>=Aquarium.WIDTH-20&&y==Aquarium.HEIGHT)
+		{
+			x--;
+		}
+		else if(y<=Aquarium.HEIGHT&&y>=Aquarium.HEIGHT-20&&x!=0)
+		{
+			x--;
+		}
+		else
+		{
+			y--;
+		}
+		green--;
 	}
 
 	/**
@@ -61,8 +96,14 @@ public class Snail {
 	public void draw(Graphics2D g) {
 		// By calling move here, if we want to move our snail, we can do so.
 		// Move gets called by draw, so whenever draw gets called.
+		if(green>200)
+		{
 		this.move();
-
+		}
+		else
+		{
+			green++;
+		}
 		// By making a new Graphics2D object, we can move everything that gets drawn to
 		// it.
 		// This is kind of tricky to wrap your head around, so I gave it to you.
@@ -139,5 +180,10 @@ public class Snail {
 		g.fill(shell3);
 		g.setColor(Color.black);
 		g.draw(shell3);
+	}
+	
+	public int getGreen()
+	{
+		return green;
 	}
 }

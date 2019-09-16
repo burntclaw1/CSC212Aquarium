@@ -2,6 +2,7 @@ package edu.smith.cs.csc212.aquarium;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 
 import me.jjfoley.gfx.GFX;
 
@@ -26,6 +27,11 @@ public class Aquarium extends GFX {
 	 * This is a static variable that tells us how tall the aquarium is.
 	 */
 	public static int HEIGHT = 500;
+	
+	public static int FOODWIDTH=200;
+	public static int FOODHEIGHT=200;
+	int i=0;
+	
 
 	/**
 	 * Put a snail on the top of the tank.
@@ -35,6 +41,9 @@ Fish fish=new Fish(getWidth()+10,300,Color.cyan,false,false);
 Fish fish1=new Fish(getWidth()+100,200,Color.yellow,false,true);
 Fish fish2=new Fish(getWidth()+300,300,Color.green,false,false);
 Fish fish3=new Fish(getWidth()+300,300,Color.green,true,false);
+HungryFish fish4 = new HungryFish(getWidth()+20, 300, Color.DARK_GRAY,true,false);
+
+
 
 
 	
@@ -50,21 +59,35 @@ Fish fish3=new Fish(getWidth()+300,300,Color.green,true,false);
 	@Override
 	public void draw(Graphics2D g) {
 		// Draw the "ocean" background.
+		
 		g.setColor(Color.blue);
 		g.fillRect(0, 0, getWidth(), getHeight());
 
 		
-		fish.draw(g);
-		fish1.draw(g);
-		fish2.draw(g);
-		fish3.draw(g);
+		//fish.draw(g);
+		//fish1.draw(g);
+		//fish2.draw(g);
+		//fish3.draw(g);
+		fish4.draw(g);
+		
+/*
+		if(i>=lol.size())
+		{
+			i=0;
+		}
+		for(int z=0;z<=i;z++)
+		{
+			if(lol.get(z)!=null)
+			lol.get(z).draw(g);
+
+		}
+		i++;
+		*/
 		
 		// Draw our snail!
 		algorithm.draw(g);
 
 		// Move the fish!
-		fish.move();
-		fish1.move();
 
 		
 	}
